@@ -1,0 +1,25 @@
+package template
+
+func Page(title string, content string) {
+
+<html>
+<head>
+    <title>` + title + `</title>
+</head>
+<body>
+    ` + content.Render() + `
+</body>
+</html>
+`
+}
+
+func Hello(back string, front string, db string) string {
+    return `
+<div>
+    <h1>Welcome to the simple stack</h1>
+    <p>You are extending ` + db + ` with ` + back + ` to run the server</p>
+    <p>And the server is returning HTML thanks to ` + front + `</p>
+</div>
+`
+}
+
