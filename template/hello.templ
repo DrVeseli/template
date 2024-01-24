@@ -1,25 +1,29 @@
 package template
 
-func Page(title string, content string) {
+templ Hello(back string, front string, db string) {
+    <div class="mockup-window border border-base-300 px-12 mt-10 mx-10 max-w-4xl mb-10">
+    
+    <h1 class="mx-auto text-xl font-bold mb-4">Welcome to the simple stack </h1>
+    <p class="mx-auto">You are extending {db} with {back} to run the server </p>
+    <p class="mx-auto">And the server is returning HTML thanks to {front} </p>
+    </div>
+    
+}
 
+templ Layout(){
+    <!DOCTYPE html>
 <html>
 <head>
-    <title>` + title + `</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    ` + content.Render() + `
+
+    @Hello("GO", "HTMX", "Pocketbase")
+
+
 </body>
 </html>
-`
 }
-
-func Hello(back string, front string, db string) string {
-    return `
-<div>
-    <h1>Welcome to the simple stack</h1>
-    <p>You are extending ` + db + ` with ` + back + ` to run the server</p>
-    <p>And the server is returning HTML thanks to ` + front + `</p>
-</div>
-`
-}
-

@@ -16,7 +16,7 @@ func main() {
 	// serves the templ.Handler instead of the static files directory
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		e.Router.GET("/", func(c echo.Context) error {
-			templ.Handler(template.Hello("GO", "HTMX", "Pocketbase")).ServeHTTP(c.Response(), c.Request())
+			templ.Handler(template.Layout()).ServeHTTP(c.Response(), c.Request())
 			return nil
 		})
 		return nil
